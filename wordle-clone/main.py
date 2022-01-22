@@ -54,6 +54,12 @@ def selectAnswerFromFile():
     return chosenAnswer
 
 NewGame = Game();
-# correct answer for debugging purposes
-print(NewGame.answer)
+intro = """The WORD has five letters.  When you enter a word, you will receive
+the following:
+_ The letter does not appear in the WORD.
+? The letter appears in the WORD but is not in the correct position.
+! The letter appears in the WORD and is in the correct position.
+
+You have 6 attempts to correctly guess the WORD."""
+print(intro)
 NewGame.gameLoop();
