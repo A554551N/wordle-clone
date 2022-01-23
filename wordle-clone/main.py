@@ -5,11 +5,12 @@ class Game():
         self.legalAnswers = readLegalAnswersFromFile()
         self.answer = selectAnswerFromFile()
         self.guessCount = 1
+        self.guessLimit = 6
         self.usedGuesses = []
         self.usedLetters = set()
 
     def gameLoop(self):
-        while self.guessCount <= 6:
+        while self.guessCount <= self.guessLimit:
             guess = input(f"Guess #{self.guessCount}>").lower().rstrip()
             if self.evaluateLegal(guess):
                 if guess == self.answer:
@@ -58,12 +59,12 @@ def selectAnswerFromFile():
     return chosenAnswer
 
 NewGame = Game();
-intro = """The WORD has five letters.  When you enter a word, you will receive
+intro = f"""The WORD has five letters.  When you enter a word, you will receive
 the following:
 _ The letter does not appear in the WORD.
 ? The letter appears in the WORD but is not in the correct position.
 ! The letter appears in the WORD and is in the correct position.
 
-You have 6 attempts to correctly guess the WORD."""
+You have {NewGame.guessLimit} attempts to correctly guess the WORD."""
 print(intro)
 NewGame.gameLoop();
