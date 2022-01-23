@@ -25,6 +25,9 @@ class Game():
             else:
                 print("Entry not valid or already used")
                 continue
+            if self.guessCount == self.guessLimit:
+                print(f"\nYou're out of guesses!  The word was {self.answer.upper()}.  Better luck next time!")
+                break
             self.guessCount+=1
     
     def evaluateLegal(self,guess):
@@ -45,6 +48,7 @@ class Game():
         
 def readLegalAnswersFromFile():
     with open('allowed_guesses.txt', 'r') as file:
+        #rstrip removes the newline character and any whitespace
         allowedList = [line.rstrip() for line in file]
     with open('answers_alphabetical.txt','r') as file:
         allAnswers = [line.rstrip() for line in file]
@@ -67,4 +71,5 @@ _ The letter does not appear in the WORD.
 
 You have {NewGame.guessLimit} attempts to correctly guess the WORD."""
 print(intro)
+print(NewGame.answer)
 NewGame.gameLoop();
