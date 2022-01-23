@@ -71,5 +71,6 @@ _ The letter does not appear in the WORD.
 
 You have {NewGame.guessLimit} attempts to correctly guess the WORD."""
 print(intro)
-print(NewGame.answer)
+#DEBUG ONLY
+# print(NewGame.answer)
 NewGame.gameLoop();
