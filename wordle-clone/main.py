@@ -6,6 +6,7 @@ class Game():
         self.answer = selectAnswerFromFile()
         self.guessCount = 1
         self.usedGuesses = []
+        self.usedLetters = set()
 
     def gameLoop(self):
         while self.guessCount <= 6:
@@ -16,7 +17,10 @@ class Game():
                     break
                 else:
                     self.usedGuesses.append(guess)
+                    for letter in guess:
+                        self.usedLetters.add(letter)
                     print(self.updatePrompt(guess))
+                    print(f"You have tried these letters: {self.usedLetters}")
             else:
                 print("Entry not valid or already used")
                 continue
